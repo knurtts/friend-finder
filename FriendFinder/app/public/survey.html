@@ -26,7 +26,7 @@
                         <a class="nav-link active" href="#">Survey</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Friends List</a>
+                        <a class="nav-link" href="/api/friends">Friends List</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">GitHub Repo</a>
@@ -192,5 +192,92 @@
           </div>
         
 </body>
+<script type="text/javascript">
+
+function validation() {
+    var valid = true;
+    $(".form-control").each(function() {
+        if ($(this).val() === "") {
+            valid = false;
+        }
+    })
+    return valid;
+}
+
+$("#submit").on("click", function() {
+  var newFriend;
+  var match;
+  var totalDiff = 0;
+  var theOne = 1000; 
+  
+  if (validation()) {
+        newFriend = {
+            "name": $("#name").val().trim(),
+            "photo": $("#photo").val().trim(),
+            "scores": [
+                $("#q1").val(),
+                $("#q2").val(),
+                $("#q3").val(),
+                $("#q4").val(),
+                $("#q5").val(),
+                $("#q6").val(),
+                $("#q7").val(),
+                $("#q8").val(),
+                $("#q9").val(),
+                $("#q10").val()
+            ]
+        };
+        
+        $(".form-control").each(function() {
+            $(this).val("");
+        });
+
+        $("#submit").text("Submit");
+
+        $.get("/api/friends")
+          .then(function(data) {
+            //for loop through data
+              //for loop through data[i].scores
+                //totalDiff += Math.abs(data[i].scores[i] - newFriend.scores[i]);
+                //if totalDiff < theOne
+                  //theOne = totalDiff;
+                  //match = data[i];
+            //log match
+            //theOne = 1000;
+            for (let i = 0; i < data.length; i++) {
+              var answers = data[i].scores;
+              for (let i = 0; i < answers.length; i++) {
+                totalDiff += Math.abs(answers[i] - newFriend.scores[i]);
+                if (totalDiff < theOne) {
+                  theOne = totalDiff;
+                  match = data[i];
+                  console.log(totalDiff);
+                  
+                } 
+                // else if (totalDiff >= theOne) {
+
+                // }
+              }
+            }
+            console.log("Your match is " + match.name);
+          });
+
+        // $.post("/api/friends", newFriend)
+        // .then(function(data) {
+        //     console.log("Friend added");
+        //     console.log(data);
+        // });
+
+    } else {
+        $("#submit").text("Please fill out the entire form.");
+    }    
+});
+//On Click event - DONE
+//create validation: ensure all fields are filled out - DONE
+//if all fields are filled => - DONE
+//push user inputs into an object called newFriend
+    //push all answer values into an array in the object
+
+//Post object into friends.js
+</script>
 </html>
-<script src="surveyLogic.js" type="text/javascript"></script>

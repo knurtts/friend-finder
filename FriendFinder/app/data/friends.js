@@ -3,16 +3,48 @@ var friends = [
     "name":"Godzilla",
     "photo":"http://www.scified.com/articles/new-monster-from-godzilla-aftershock-comic-unveiled-2.jpg",
     "scores":[
-        5,
         1,
-        4,
-        4,
-        5,
         1,
-        2,
-        5,
-        4,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
         1
+      ]
+  },
+  {
+    "name":"Mothra",
+    "photo":"http://www.scified.com/articles/new-monster-from-godzilla-aftershock-comic-unveiled-2.jpg",
+    "scores":[
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
+  },
+  {
+    "name":"Rodan",
+    "photo":"http://www.scified.com/articles/new-monster-from-godzilla-aftershock-comic-unveiled-2.jpg",
+    "scores":[
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
       ]
   }
     ];
