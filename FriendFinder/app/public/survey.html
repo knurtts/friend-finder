@@ -206,9 +206,6 @@ function validation() {
 
 $("#submit").on("click", function() {
   var newFriend;
-  var match;
-  var totalDiff = 0;
-  var theOne = 1000; 
   
   if (validation()) {
         newFriend = {
@@ -234,40 +231,12 @@ $("#submit").on("click", function() {
 
         $("#submit").text("Submit");
 
-        $.get("/api/friends")
-          .then(function(data) {
-            //for loop through data
-              //for loop through data[i].scores
-                //totalDiff += Math.abs(data[i].scores[i] - newFriend.scores[i]);
-                //if totalDiff < theOne
-                  //theOne = totalDiff;
-                  //match = data[i];
-            //log match
-            //theOne = 1000;
-            for (let i = 0; i < data.length; i++) {
-              var answers = data[i].scores;
-              for (let i = 0; i < answers.length; i++) {
-                totalDiff += Math.abs(answers[i] - newFriend.scores[i]);
-                if (totalDiff < theOne) {
-                  theOne = totalDiff;
-                  match = data[i];
-                  console.log(totalDiff);
-                  
-                } 
-                // else if (totalDiff >= theOne) {
-
-                // }
-              }
-            }
-            console.log("Your match is " + match.name);
-          });
-
-        // $.post("/api/friends", newFriend)
-        // .then(function(data) {
-        //     console.log("Friend added");
-        //     console.log(data);
-        // });
-
+        $.post("/api/friends", newFriend)
+        .then(function(data) {
+            console.log("Friend added");
+            console.log(data);
+        });
+      
     } else {
         $("#submit").text("Please fill out the entire form.");
     }    
