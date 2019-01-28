@@ -3,50 +3,50 @@ var friends = [
     "name":"Godzilla",
     "photo":"http://www.scified.com/articles/new-monster-from-godzilla-aftershock-comic-unveiled-2.jpg",
     "scores":[
+        3,
+        4,
+        5,
+        5,
+        5,
+        3,
+        2,
+        3,
         1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
+        4
       ]
   },
   {
-    "name":"Mothra",
-    "photo":"http://www.scified.com/articles/new-monster-from-godzilla-aftershock-comic-unveiled-2.jpg",
+    "name":"Kevin",
+    "photo":"https://i.redd.it/o4xrqzr0puc21.jpg",
     "scores":[
         3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
+        2,
+        5,
+        5,
+        2,
+        1,
+        1,
+        5,
         3,
         3
       ]
   },
   {
-    "name":"Rodan",
-    "photo":"http://www.scified.com/articles/new-monster-from-godzilla-aftershock-comic-unveiled-2.jpg",
+    "name":"Randy",
+    "photo":"https://i.redd.it/js2bxqzg3tc21.jpg",
     "scores":[
         5,
+        4,
+        3,
+        2,
+        1,
+        2,
+        3,
+        3,
         5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5
+        3
       ]
-  }
+  },
     ];
 
 module.exports = friends;
