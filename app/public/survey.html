@@ -9,8 +9,10 @@
     crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
     crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
   <title>Friend Finder - Survey</title>
 </head>
 
@@ -168,29 +170,29 @@
         <br>
         <br>
 
-        <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit" data-toggle="modal" data-target="#mymodal"><i class="fa fa-check-circle"
-            aria-hidden="true"></i>
+        <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit" data-toggle="modal" data-target="#mymodal"><i
+            class="fa fa-check-circle" aria-hidden="true"></i>
           Submit</button>
       </div>
     </div>
   </div>
   </div>
   </div>
-    <div class="modal fade" id="myModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3>Here's your new best friend!</h3>
-          </div>
-          <div class="modal-body">
-            Body
-          </div>
-          <div class="modal-footer">
-            They probably aren't a killer. Probably.
-          </div>
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Here's your new best friend!</h3>
+        </div>
+        <div class="modal-body">
+          Body
+        </div>
+        <div class="modal-footer">
+          They probably aren't a killer. Probably.
         </div>
       </div>
     </div>
+  </div>
   </div>
 
 </body>
@@ -231,14 +233,15 @@
       });
 
       $("#submit").text("Submit");
-      
+
       // $.get("/api/match", newFriend).then(function(err, data) {
       //     if (err) throw err;
       //     console.log(data);
       //   });
-      
+
       $.post("/api/friends", newFriend, function (data) {
-        $(".modal-body").html("<img style='width: 400px' src='"+data.photo+"' alt='An image of your new best friend'><br><h4>"+data.name+"</h4>");
+        $(".modal-body").html("<img style='width: 400px' src='" + data.photo +
+          "' alt='An image of your new best friend'><br><h4>" + data.name + "</h4>");
       });
 
       $('#myModal').modal('show');
@@ -247,7 +250,6 @@
       $("#submit").text("Please fill out the entire form.");
     }
   });
-
 </script>
 
 </html>

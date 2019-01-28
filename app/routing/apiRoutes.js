@@ -1,50 +1,38 @@
 var friends = require("../data/friends");
 
-module.exports = function(app) {
+module.exports = function (app) {
 
-    app.get("/api/friends", function(req, res) {
-        res.json(friends);
-     });
-     
-     app.post("/api/friends", function(req, res) {
-        var newFriend = req.body;
-        var match;
-        var totalDiff = 0;
-        var diffArray = [];
+   app.get("/api/friends", function (req, res) {
+      res.json(friends);
+   });
 
-        for (let i = 0; i < friends.length; i++) {
-           var answers = friends[i].scores;
-           console.log(answers);
-           
-           for (let j = 0; j < friends[i].scores.length; j++) {
-               totalDiff += Math.abs(answers[j] - newFriend.scores[j]);
-            //    console.log("Difference: " + totalDiff);
-               
-            }
-            diffArray.push(totalDiff);
-            totalDiff = 0;
-        }
-        
-        var value = 1000;
-        var candidate = 0; 
-        for (i = 0; i < diffArray.length; i++) {
-           if (diffArray[i] < value) {
-            //    console.log("i = " + i);
-               
-               value = diffArray[i];
-               candidate = i;
+   app.post("/api/friends", function (req, res) {
+      var newFriend = req.body;
+      var match;
+      var totalDiff = 0;
+      var diffArray = [];
 
-           }
-        }
-        // console.log(candidate);
-        
-        match = friends[candidate];
-        // console.log(match);
-       
-        console.log("Your match is " + friends[candidate].name);
+      for (let i = 0; i < friends.length; i++) {
+         var answers = friends[i].scores
+         for (let j = 0; j < answers.length; j++) {
+            totalDiff += Math.abs(answers[j] - newFriend.scores[j]);
+         }
+         diffArray.push(totalDiff);
+         totalDiff = 0;
+      }
 
-         friends.push(newFriend);
-         res.json(friends[candidate]);
-        });
-        
+      var value = 1000;
+      var candidate = 0;
+      for (i = 0; i < diffArray.length; i++) {
+         if (diffArray[i] < value) {
+            value = diffArray[i];
+            candidate = i;
+         }
+      }
+
+      match = friends[candidate];
+      friends.push(newFriend);
+      res.json(friends[candidate]);
+   });
+
 };
